@@ -7,7 +7,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 const override = css`
   display: block;
   margin: 0 auto;
-  border-color: red;
+  border-color: #fff;
 `;
 
 export default class CoinList extends React.Component {
@@ -17,7 +17,10 @@ export default class CoinList extends React.Component {
   }
 
   componentDidMount() {
+    // Call the API.
     this.getData();
+
+    // Refresh API data every 5 seconds.
     setInterval(this.getData, 5000); 
   }
 
@@ -36,8 +39,8 @@ export default class CoinList extends React.Component {
       <div>
         <ClipLoader
           css={override}
-          size={150}
-          color={"#123abc"}
+          size={100}
+          color={"#ffffff"}
           loading={this.state.loading}
         />
         {this.state.coins.map(coin => 
