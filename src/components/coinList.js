@@ -61,18 +61,18 @@ export default class CoinList extends React.Component {
 
     let prevButton;
     if (this.state.page <= 1) {
-      prevButton = <button type="button" class="btn btn-primary" disabled>Prev</button>
+      prevButton = <button type="button" className="btn btn-primary" disabled>Prev</button>
     
     }else {
-      prevButton = <button type="button" class="btn btn-primary" onClick={this.previousPage}>Prev</button>
+      prevButton = <button type="button" className="btn btn-primary" onClick={this.previousPage}>Prev</button>
     }
 
     return (
       <div>
          
       
-      <table class="table">
-        <thead class="table-dark">
+      <table className="table">
+        <thead className="table-dark">
           <tr>
             {row}
             <th scope="col">#</th>
@@ -80,19 +80,21 @@ export default class CoinList extends React.Component {
             <th scope="col">Price</th>
         </tr>
         </thead>
-        {this.state.coins.map(coin => 
-          <tr>
-            <td>{coin.market_cap_rank}</td>
-            <td className="align-middle">
-              <img src={coin.image} className="mr-2" alt="Logo" width="25" /> 
-              <Link to="/coin/{coin.id}">{coin.name} ({coin.symbol.toUpperCase()})</Link>
-            </td>
-            <td>{coin.current_price.toFixed(2)}</td>                 
-          </tr> 
-        )}
+        <tbody>
+          {this.state.coins.map(coin => 
+            <tr key={coin.id}>
+              <td>{coin.market_cap_rank}</td>
+              <td className="align-middle">
+                <img src={coin.image} className="mr-2" alt="Logo" width="25" /> 
+                <Link to={`/coin/${coin.id}`}>{coin.name} ({coin.symbol.toUpperCase()})</Link>
+              </td>
+              <td>{coin.current_price.toFixed(2)}</td>                 
+            </tr> 
+          )}
+        </tbody>
       </table>
       {prevButton}
-      <button type="button" class="btn btn-primary" onClick={this.nextPage}>Next</button>
+      <button type="button" className="btn btn-primary" onClick={this.nextPage}>Next</button>
 
       </div>
     );

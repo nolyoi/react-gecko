@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import CoinList from './components/coinList';
+import Coin from './components/coin';
 import Home from './components/home';
-import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route, Link, useParams} from "react-router-dom";
 
 
 class App extends Component {
@@ -10,19 +11,19 @@ class App extends Component {
     return (
       <div className="container"> 
         <Router>
-          <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="/">Navbar</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+          <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <div className="container-fluid">
+              <a className="navbar-brand" href="/">Navbar</a>
+              <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
               </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
+              <div className="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav">
+                  <li className="nav-item">
                     <Link to="/" href="/" className="nav-link active" aria-current="page">Home</Link>
                   </li>
-                  <li class="nav-item">
-                    <Link to="/coins" href="/coins" class="nav-link">Coins</Link>
+                  <li className="nav-item">
+                    <Link to="/coins" href="/coins" className="nav-link">Coins</Link>
                   </li>
                 </ul>
               </div>
@@ -30,8 +31,12 @@ class App extends Component {
           </nav>
         
           <Switch>
+            
             <Route path="/coins">
               <CoinList />
+            </Route>
+            <Route path="/coin/:coinId">
+              <Coin />
             </Route>
             <Route path="/">
               <Home />
