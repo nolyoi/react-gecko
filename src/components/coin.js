@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function CoinPage(coin) {
-  // Declare a new state variable, which we'll call "count"
-  const [count, setCount] = useState(0);
-
-  return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
-    </div>
+const Coin = ({name, price, rank}) => {
+  return(
+    <tr>
+      <td> {rank} </td>
+      <td> {name} </td>
+      <td>${price.toFixed(2)} </td>
+    </tr>
   );
-}
+};
+
+export default Coin;

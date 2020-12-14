@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import Coin from './coin';
 import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
+import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+
 
 const override = css`
   display: block;
@@ -82,8 +83,11 @@ export default class CoinList extends React.Component {
         {this.state.coins.map(coin => 
           <tr>
             <td>{coin.market_cap_rank}</td>
-            <td>{coin.name}</td>
-            <td>{coin.current_price}</td>                 
+            <td className="align-middle">
+              <img src={coin.image} className="mr-2" alt="Logo" width="25" /> 
+              <Link to="/coin/{coin.id}">{coin.name} ({coin.symbol.toUpperCase()})</Link>
+            </td>
+            <td>{coin.current_price.toFixed(2)}</td>                 
           </tr> 
         )}
       </table>
